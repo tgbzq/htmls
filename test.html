@@ -3,9 +3,105 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hello World</title>
+    <title>test</title>
+    <style>
+    body {
+        /* 1. 定义一个包含多种蓝色的渐变，角度设为 -45度 */
+        background: linear-gradient(
+            to left top, 
+            #1e3c72, 
+            #2a5298, 
+            #0072ff, /* ★修改点：换成了宝蓝色，亮度适中，色彩饱满 */
+            #2a5298, 
+            #1e3c72);
+        
+        /* 2. 关键点：把背景放大到 400% */
+        background-size:400% 400%;
+        /* 如果不放大，背景就是静止的，怎么动都看不出来 */
+        background-attachment: fixed;
+    
+        
+        /* 3. 调用动画 */
+        /* gradientBG 是动画名字 */
+        /* 15s 是完成一次循环的时间（越长越慢，越优雅） */
+        /* ease 是速度曲线（慢-快-慢） */
+        /* infinite 表示无限循环 */
+        animation: flowBackground 15s linear infinite alternate;
+        
+        /* 之前的布局设置保持不变 */
+        min-height: 100vh;
+        margin: 0;
+        flex-direction: column;
+        display: flex;
+        align-items: center;
+        font-family: 'Noto Sans SC', sans-serif;
+        color: white;
+    }
+
+    .icebar {
+
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 60px;
+        background: rgba(0, 0, 0, 0.3);/*半透*/
+        border-bottom: 3px solid rgba(255, 255, 255, 0.1);
+        z-index: 1000;
+        backdrop-filter: blur(10px);/*毛玻璃*/
+
+    }
+
+    .icebar a{
+        color: white;
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.3s;
+    }
+    
+    .icebar a:hover {
+        color: #00c6ff; 
+    }
+
+
+     .long-content {
+        width: 80%;
+        max-width: 800px;
+        line-height: 1.8;
+    }
+
+    /* 4. 定义动画的具体行为 */
+ @keyframes flowBackground {
+        0% {
+            background-position: 0% 0%; /* 开始位置：左边 */
+        }
+        100% {
+            background-position: 100% 100%; /* 中间位置：右边 */
+        }
+    }
+    </style>
 </head>
 <body>
-    <h1>Hello World</h1>
+    <h1>hello World</h1>
+        <div class="long-content">
+            <p>第一段：为了让页面能够滚动，我们需要更多的文字。</p>
+        <p>第二段：你现在的背景是 fixed（固定）的，所以当你向下拉动时，你会发现背景纹理是钉在屏幕上的，只有我这些文字在移动。</p>
+        <br><br><br><br>
+        <p>（假装这里有很多空行...）</p>
+        <br><br><br><br>
+        <p>第三段：继续增加高度...</p>
+        <br><br><br><br>
+        <p>第四段：现在内容高度肯定超过屏幕了，你应该能看到右侧的滚动条了！</p>
+        <br><br><br><br>
+        <br><br><br><br>
+        <p>你好 我的名字叫伯特 你爸爸喜欢吃什么</p>
+        </div>
+
+        <div class="icebar">
+
+            <a href="https://www.baidu.com" target="_blank">百度一下</a>
+        </div>
 </body>
+
+
 </html>
